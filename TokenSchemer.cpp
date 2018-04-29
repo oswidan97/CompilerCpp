@@ -8,25 +8,32 @@
 #include <regex>
 
 using namespace std ;
-TokenSchemer::TokenSchemer(){} ;
-void TokenSchemer::TokenSchemers(std :: map<int,regex> & tokenschemer){
-regex rgx("[aA-Zz]+\d*");
-    tokenschemer.insert( std::pair <int,regex>(1,regex("PROGRAM")));
-    tokenschemer.insert( std::pair <int,regex>(2,regex("VAR")));
-    tokenschemer.insert( std::pair <int,regex>(3,regex("BEGIN")));
-    tokenschemer.insert( std::pair <int,regex>(4,regex("END")));
-    tokenschemer.insert( std::pair <int,regex>(5,regex("END.")));
-    tokenschemer.insert( std::pair <int,regex>(6,regex("FOR")));
-    tokenschemer.insert( std::pair <int,regex>(7,regex("READ")));
-    tokenschemer.insert( std::pair <int,regex>(8,regex("WRITE")));
-    tokenschemer.insert( std::pair <int,regex>(9,regex("TO")));
-    tokenschemer.insert( std::pair <int,regex>(10,regex("DO")));
-    tokenschemer.insert( std::pair <int,regex>(11,regex(";")));
-    tokenschemer.insert( std::pair <int,regex>(12,regex("=")));
-    tokenschemer.insert( std::pair <int,regex>(13,regex("\\+")));
-    tokenschemer.insert( std::pair <int,regex>(15,regex("\\(")));
-    tokenschemer.insert( std::pair <int,regex>(16,regex("\\)")));
-    tokenschemer.insert( std::pair <int,regex>(17,rgx));
-    tokenschemer.insert( std::pair <int,regex>(18,regex("\\*")));
 
+
+void TokenSchemer::scheme(){
+regex rgx("[aA-Zz]+\\d*");
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(1,regex("PROGRAM")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(2,regex("VAR")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(3,regex("BEGIN")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(4,regex("END")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(5,regex("END.")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(6,regex("FOR")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(7,regex("READ")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(8,regex("WRITE")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(9,regex("TO")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(10,regex("DO")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(11,regex(";")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(12,regex("=")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(13,regex("\\+")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(15,regex("\\(")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(16,regex("\\)")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(17,rgx));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(18,regex("\\*")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(19,regex(",")));
+
+
+}
+
+const map<int, regex> &TokenSchemer::getTokenScheme() const {
+    return tokenScheme;
 }

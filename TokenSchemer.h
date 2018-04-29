@@ -14,9 +14,17 @@ using namespace std ;
 class TokenSchemer {
 
 public :
-    TokenSchemer();
+    TokenSchemer(){
+        scheme();
+    };
 
-void TokenSchemers(std :: map<int,regex> & );
+public:
+    const map<int, regex> &getTokenScheme() const;
+
+private:
+    map<int,regex> tokenScheme;
+
+    void scheme();
 
 };
 

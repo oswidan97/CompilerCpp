@@ -4,55 +4,32 @@
 #include <fstream>
 #include "tokenizer.h"
 #include "TokenSchemer.h"
-#include <regex>;
+
 using namespace std;
 
 
-
 int main() {
-    map<int,regex> tokenScheme;
 
     vector<string> lines;
-    vector<string> tokens;
+    vector<pair<string,int>> tokens;
+    tokenizer tok;
+    ifstream input("../code");
 
-    ifstream input("/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/code");
-
-    if (!input.is_open())cout<<"not open";
+    if (!input.is_open())cout << "not open";
     string s;
-    while(!input.eof()){
-        getline(input,s);
-        lines.insert(lines.end(),s);
-
+    while (!input.eof()) {
+        getline(input, s);
+        lines.insert(lines.end(), s);
     }
-    int flag=0;
 
     input.close();
-    tokenizer tok;
-    TokenSchemer tokenSchemer;
+
+
+
     for (int i = 0; i < lines.size(); ++i)
-        tok.tokenize(lines[i],tokens);
-    for (int i = 0; i < tokens.size(); ++i)
-        cout<< tokens[i]<<endl;
-
-    tokenSchemer.TokenSchemers(tokenScheme);
-    cout << "--------------------------------------------" << endl ;
-
-    auto it = tokenScheme.begin();
-for(int i =0; i<tokens.size();++i){
-    { for (int j =0 ; j < tokenScheme.size(); j++)
-       if(regex_match(tokens[i],tokenScheme[j])) {
-            flag = 1;
-          auto   it= tokenScheme.find(j);
-             cout << tokens[i] << " --- > " <<it -> first << endl;
-             break;
-             }
-    }
-if(flag==0)
-{ //cout << "error ";
-    //break;
-}
-flag=0;
-}
+        tok.tokenize(lines[i], tokens);
+    for(pair<string,int> x:tokens)
+        cout<<x.first<<" "<<x.second<<endl;
 
 
     return 0;

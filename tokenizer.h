@@ -16,7 +16,7 @@ private:
 
 public :
         tokenizer();
-        void tokenize(std::string,std::vector<std::string> &);
+        void tokenize(std::string,std::vector<std::pair<std::string,int>> &);
 
 };
 

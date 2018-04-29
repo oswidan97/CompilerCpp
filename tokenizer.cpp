@@ -4,26 +4,49 @@
 
 #include <regex>
 #include "tokenizer.h"
+#include "TokenSchemer.h"
+
 using namespace std;
+
 tokenizer::tokenizer() {}
 
-void tokenizer::tokenize(string str,vector<string>& vec) {
+void tokenizer::tokenize(string str, vector<pair<string,int>> &vec) {
 
+    int flag = 0;
 
-    regex rgx("(\\w+)\\s*([*+,()=;.]*)");
-    sregex_iterator position(str.cbegin(),str.cend(),rgx);
-
+    regex rgx("(\\w+\\.*)\\s*([*+,=:();]*)");
+    sregex_iterator position(str.cbegin(), str.cend(), rgx);
     sregex_iterator end;
-    while(position!=end){
-        //cout<<"matched:"<<position->str(2)<<endl;
-        for (int i = 1; i < position->size(); ++i)
-            if (position->str((unsigned long) i) != "")
-                vec.push_back(position->str((unsigned long) i));
 
-    position++;
+    TokenSchemer tokenSchemer;
+
+    map<int ,regex> scheme = tokenSchemer.getTokenScheme();
+
+
+    while (position != end) {
+        for (int i = 1; i < position->size(); ++i){
+            if (position->str((unsigned long) i) != "") {
+                for (int j = 0; j < scheme.size(); j++){
+                    if (regex_match(position->str((unsigned long) i), scheme[j])) {
+                        flag = 1;
+                        vec.push_back(make_pair(position->str((unsigned long) i),j));
+                        break;
+                    }}
+
+                if (flag == 0)  cout << "error " << "token " << position->str((unsigned long) i)<<" not valid" << endl;
+
+
+                flag = 0;
+            }
+
+        }
+        position++;
+
+
     }
 
-
-
 }
+
+
+
 

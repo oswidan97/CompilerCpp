@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/TokenSchemer.cpp
+/home/omar_swidan/CLionProjects/CompilerCpp/TokenSchemer.cpp
 iostream
 -
 TokenSchemer.h
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/TokenSchemer.h
+/home/omar_swidan/CLionProjects/CompilerCpp/TokenSchemer.h
 map
 -
 regex
 -
 
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/TokenSchemer.h
+/home/omar_swidan/CLionProjects/CompilerCpp/TokenSchemer.h
 map
 -
 string
@@ -26,7 +26,7 @@ string
 regex
 -
 
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/main.cpp
+/home/omar_swidan/CLionProjects/CompilerCpp/main.cpp
 iostream
 -
 map
@@ -36,19 +36,19 @@ vector
 fstream
 -
 tokenizer.h
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/tokenizer.h
+/home/omar_swidan/CLionProjects/CompilerCpp/tokenizer.h
 TokenSchemer.h
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/TokenSchemer.h
-regex
--
+/home/omar_swidan/CLionProjects/CompilerCpp/TokenSchemer.h
 
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/tokenizer.cpp
+/home/omar_swidan/CLionProjects/CompilerCpp/tokenizer.cpp
 regex
 -
 tokenizer.h
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/tokenizer.h
+/home/omar_swidan/CLionProjects/CompilerCpp/tokenizer.h
+TokenSchemer.h
+/home/omar_swidan/CLionProjects/CompilerCpp/TokenSchemer.h
 
-/home/ziad/Desktop/CompilerCpp-master(1)/CompilerCpp-master/tokenizer.h
+/home/omar_swidan/CLionProjects/CompilerCpp/tokenizer.h
 iostream
 -
 
