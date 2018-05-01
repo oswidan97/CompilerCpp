@@ -30,21 +30,52 @@ bool ::Parser::read(vector<pair<string,int>>::iterator it) {
 
 bool ::Parser::idList(vector<pair<string, int>>::iterator it) {
 
-bool found =0;
+    bool found = 0;
 
-if(it->second==17){
-    found=1;
-    it++;
-    while(it -> second == 19 && found== true){
-it++;
-if(it -> second ==17 )
-    it++;
-    else found= false;
+    if (it->second == 17) {
+        found = 1;
+        it++;
+        while (it->second == 19 && found == true) {
+            it++;
+            if (it->second == 17)
+                it++;
+            else found = false;
 
 
+        }
     }
+    return found;
 }
-return found;
+bool Parser::assign(vector<pair<string, int>>::iterator it) {
+    bool found=0;
+    if (it->second==17){
+        it++;
+        if (it->second==12){
+            it++;
+            if (exp(it)){
+                found=1;
+            }
+        }
+    }
+
+    return found;
+}
+
+bool ::Parser::exp(vector<pair<string, int>>::iterator it) {
+    bool found=0;
+    if (term(it)){
+        found=1;
+        while((it->second==13 || it->second==14)&& found==1){
+            it++;
+            if(!term(it)){
+                found=0;
+            }
+        }
+        return found;
+    }
+
+
+    return found;
 }
 
 bool ::Parser::factor(vector<pair<string, int>>::iterator it) {
@@ -62,5 +93,6 @@ it++;
 return found;
 
 }
+
 
 
