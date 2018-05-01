@@ -26,9 +26,9 @@ int main() {
 
     for (int i = 0; i < lines.size(); ++i)
         tok.tokenize(lines[i], tokens);
-    for(pair<string,int> x:tokens)
-        cout<<x.first<<" "<<x.second<<endl;
-    Parser::read(tokens.begin());
+   // for(pair<string,int> x:tokens)
+     //   cout<<x.first<<" "<<x.second<<endl;
+    cout<<Parser::prog(tokens.begin());
 
 
 

@@ -18,6 +18,13 @@ namespace Parser{
     bool term(vector<pair<string, int>>::iterator);
     bool factor(vector<pair<string, int>>::iterator);
     bool stmtList(vector<pair<string, int>>::iterator);
+    bool stmt(vector<pair<string, int>>::iterator);
+    bool forProcedure(vector<pair<string, int>>::iterator);
+    bool prog(vector<pair<string, int>>::iterator);
+    bool index_exp(vector<pair<string, int>>::iterator);
+
+
+
 
 
 }

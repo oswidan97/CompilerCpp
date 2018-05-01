@@ -8,17 +8,17 @@
 
 using namespace std;
 
-bool ::Parser::read(vector<pair<string,int>>::iterator it) {
+bool ::Parser::read(vector<pair<string, int>>::iterator it) {
 
-    bool found=0;
-    if (it->second==7){
+    bool found = 0;
+    if (it->second == 7) {
         it++;
-        if(it->second==15){
+        if (it->second == 15) {
             it++;
-            if(idList(it)){
+            if (idList(it)) {
                 it++;
-                if(it->second==16){
-                    found=1;
+                if (it->second == 16) {
+                    found = 1;
                     it++;
                 }
             }
@@ -28,19 +28,70 @@ bool ::Parser::read(vector<pair<string,int>>::iterator it) {
 
 }
 
-bool ::Parser::write(vector<pair<string,int>>::iterator it) {
+bool ::Parser::write(vector<pair<string, int>>::iterator it) {
 
-    bool found=0;
-    if (it->second==7){
+    bool found = 0;
+    if (it->second == 7) {
         it++;
-        if(it->second==15){
+        if (it->second == 15) {
             it++;
-            if(idList(it)){
+            if (idList(it)) {
                 it++;
-                if(it->second==16){
-                    found=1;
+                if (it->second == 16) {
+                    found = 1;
                     it++;
                 }
+            }
+        }
+    }
+    return found;
+
+}
+
+
+bool Parser::assign(vector<pair<string, int>>::iterator it) {
+    bool found = 0;
+    if (it->second == 17) {
+        it++;
+        if (it->second == 12) {
+            it++;
+            if (exp(it)) {
+                found = 1;
+            }
+        }
+    }
+
+    return found;
+}
+
+bool ::Parser::exp(vector<pair<string, int>>::iterator it) {
+    bool found = 0;
+    if (factor(it)) {
+        found = 1;
+        while ((it->second == 13 || it->second == 18) && found == 1) {
+            it++;
+            if (!factor(it)) {
+                found = 0;
+            }
+        }
+        return found;
+    }
+
+
+    return found;
+}
+
+bool ::Parser::factor(vector<pair<string, int>>::iterator it) {
+    bool found = 0;
+    if (it->second == 17 || it->second == 20) {
+        found = 1;
+        it++;
+    } else if (it->second == 15) {
+        it++;
+        if (exp) {
+            if (it->second == 16) {
+                found = 1;
+                it++;
             }
         }
     }
@@ -59,7 +110,7 @@ bool ::Parser::idList(vector<pair<string, int>>::iterator it) {
             it++;
             if (it->second == 17)
                 it++;
-            else found = false;
+            else found = 0;
 
 
         }
@@ -67,54 +118,74 @@ bool ::Parser::idList(vector<pair<string, int>>::iterator it) {
     return found;
 }
 
-bool Parser::assign(vector<pair<string, int>>::iterator it) {
-    bool found=0;
-    if (it->second==17){
-        it++;
-        if (it->second==12){
+bool ::Parser::stmtList(vector<pair<string, int>>::iterator it) {
+    bool found = 0;
+    if (stmt(it)) {
+        found = 1;
+
+        while (it->second == 11 && found) {
             it++;
-            if (exp(it)){
+
+            if (stmt(it))
                 found=1;
-            }
+            else found = 0;
         }
+        if (it->second==5)
+            found=1;
     }
-
     return found;
 }
 
-bool ::Parser::exp(vector<pair<string, int>>::iterator it) {
+bool ::Parser::stmt(vector<pair<string, int>>::iterator it) {
     bool found=0;
-    if (factor(it)){
-        found=1;
-        while((it->second==13 || it->second==18)&& found==1){
+    if (assign(it)||read(it)||write(it)||forProcedure(it))
+            found=1;
+    return found;
+
+}
+
+bool ::Parser::forProcedure(vector<pair<string, int>>::iterator) {
+    return false;
+}
+
+bool ::Parser::prog(vector<pair<string, int>>::iterator it) {
+    bool found=0;
+    if(it->second==1){
+        it++;
+        cout<<"prog"<<endl;
+        if (it->second==17){
             it++;
-            if(!factor(it)){
-                found=0;
+            cout<<"id"<<endl;
+            if (it->second==2){
+                it++;
+                cout<<"var"<<endl;
+                if (idList(it)){
+                    cout<<"idlist"<<endl;
+                    it++;
+                    if (stmtList(it)){
+                        cout<<"stmtlist"<<endl;
+                        it++;
+                        if (it->second==5){
+                            cout<<"end"<<endl;
+                            found=1;
+                            it++;
+                        }
+
+                    }
+                }
             }
         }
-        return found;
     }
-
 
     return found;
 }
 
-bool ::Parser::factor(vector<pair<string, int>>::iterator it) {
-    bool found =0;
-    if(it->second==17 || it->second ==  18){
-found=1;
-it++;
-    } else if (it->second ==15){
-        it++;
-        if(exp){
-        if(it->second==16){
-found=1;
-it++;
-        }
-    }}
-return found;
-
+bool ::Parser::index_exp(vector<pair<string, int>>::iterator) {
+    return false;
 }
+
+
+
 
 
 
