@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/omar_swidan/CLionProjects/CompilerCpp/Parser.cpp
+Parser.h
+/home/omar_swidan/CLionProjects/CompilerCpp/Parser.h
+iterator
+-
+vector
+-
+
+/home/omar_swidan/CLionProjects/CompilerCpp/Parser.h
+iostream
+-
+vector
+-
+
 /home/omar_swidan/CLionProjects/CompilerCpp/TokenSchemer.cpp
 iostream
 -
@@ -39,6 +53,8 @@ tokenizer.h
 /home/omar_swidan/CLionProjects/CompilerCpp/tokenizer.h
 TokenSchemer.h
 /home/omar_swidan/CLionProjects/CompilerCpp/TokenSchemer.h
+Parser.h
+/home/omar_swidan/CLionProjects/CompilerCpp/Parser.h
 
 /home/omar_swidan/CLionProjects/CompilerCpp/tokenizer.cpp
 regex

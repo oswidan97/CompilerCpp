@@ -25,6 +25,7 @@ regex rgx("[aA-Zz]+\\d*");
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(11,regex(";")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(12,regex(":=")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(13,regex("\\+")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(14,regex("\\-")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(15,regex("\\(")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(16,regex("\\)")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(17,rgx));
