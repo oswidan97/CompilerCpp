@@ -23,13 +23,13 @@ regex rgx("[aA-Zz]+\\d*");
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(9,regex("TO")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(10,regex("DO")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(11,regex(";")));
-    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(12,regex("=")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(12,regex(":=")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(13,regex("\\+")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(15,regex("\\(")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(16,regex("\\)")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(17,rgx));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(18,regex("\\*")));
-    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(19,regex(",git ")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(19,regex(",")));
 
 
 }

@@ -28,8 +28,20 @@ bool ::Parser::read(vector<pair<string,int>>::iterator it) {
 
 }
 
-bool ::Parser::idList(vector<pair<string, int>>::iterator) {
-    bool found=0;
-    if()
+bool ::Parser::idList(vector<pair<string, int>>::iterator it) {
+    if (it->second==17){
+        it++;
+        if (it->second==12){
+            it++;
 
+
+
+        }
+
+    }
+
+    return false;
 }
+
+
+
