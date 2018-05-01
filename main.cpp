@@ -4,9 +4,9 @@
 #include <fstream>
 #include "tokenizer.h"
 #include "TokenSchemer.h"
+#include "Parser.h"
 
 using namespace std;
-
 
 int main() {
 
@@ -24,12 +24,12 @@ int main() {
 
     input.close();
 
-
-
     for (int i = 0; i < lines.size(); ++i)
         tok.tokenize(lines[i], tokens);
     for(pair<string,int> x:tokens)
         cout<<x.first<<" "<<x.second<<endl;
+    Parser::read(tokens.begin());
+
 
 
     return 0;

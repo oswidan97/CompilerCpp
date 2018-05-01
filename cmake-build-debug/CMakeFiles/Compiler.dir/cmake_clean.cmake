@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Compiler.dir/main.cpp.o"
   "CMakeFiles/Compiler.dir/tokenizer.cpp.o"
   "CMakeFiles/Compiler.dir/TokenSchemer.cpp.o"
+  "CMakeFiles/Compiler.dir/Parser.cpp.o"
   "Compiler.pdb"
   "Compiler"
 )

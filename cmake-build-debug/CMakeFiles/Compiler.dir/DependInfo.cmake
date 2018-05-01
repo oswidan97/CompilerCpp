@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/omar_swidan/CLionProjects/CompilerCpp/Parser.cpp" "/home/omar_swidan/CLionProjects/CompilerCpp/cmake-build-debug/CMakeFiles/Compiler.dir/Parser.cpp.o"
   "/home/omar_swidan/CLionProjects/CompilerCpp/TokenSchemer.cpp" "/home/omar_swidan/CLionProjects/CompilerCpp/cmake-build-debug/CMakeFiles/Compiler.dir/TokenSchemer.cpp.o"
   "/home/omar_swidan/CLionProjects/CompilerCpp/main.cpp" "/home/omar_swidan/CLionProjects/CompilerCpp/cmake-build-debug/CMakeFiles/Compiler.dir/main.cpp.o"
   "/home/omar_swidan/CLionProjects/CompilerCpp/tokenizer.cpp" "/home/omar_swidan/CLionProjects/CompilerCpp/cmake-build-debug/CMakeFiles/Compiler.dir/tokenizer.cpp.o"
