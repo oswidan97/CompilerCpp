@@ -8,8 +8,28 @@
 
 using namespace std;
 
-void ::Parser::read(vector<pair<string,int>>::iterator) {
+bool ::Parser::read(vector<pair<string,int>>::iterator it) {
 
+    bool found=0;
+    if (it->second==7){
+        it++;
+        if(it->second==15){
+            it++;
+            if(idList(it)){
+                it++;
+                if(it->second==16){
+                    found=1;
+                    it++;
+                }
+            }
+        }
+    }
+    return found;
 
+}
+
+bool ::Parser::idList(vector<pair<string, int>>::iterator) {
+    bool found=0;
+    if()
 
 }
