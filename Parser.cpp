@@ -103,7 +103,7 @@ bool ::Parser::idList(vector<pair<string, int>>::iterator& it) {
     if (it->second == 17) {
         found = 1;
         it++;
-        while (it->second == 19 && found==1) {
+        while (it->second == 19 && found) {
             it++;
             if (it->second == 17)
                 it++;
@@ -120,21 +120,14 @@ bool ::Parser::stmtList(vector<pair<string, int>>::iterator& it) {
     if(stmt(it)) {
         found = 1;
 
-cout<< it->first;
-    if(stmt(it)) {
-        found = 1;
-        while (it->second == 11 && found==1  ) {
+        while (it->second == 11 && found) {
             it++;
             if (!stmt(it))
                 found=0;
 
 
         }
-        it++;
-        //cout<< it->first;
-    }
         if (it->second==5)
-
             found=1;
     }
 
@@ -155,21 +148,20 @@ bool ::Parser::forProcedure(vector<pair<string, int>>::iterator&) {
 }
 
 bool ::Parser::prog(vector<pair<string, int>>::iterator& it) {
-    bool found = 0;
-
-    if (it->second == 1) {
+    bool found=0;
+    if(it->second==1){
         it++;
-        cout << "prog" << endl;
-        if (it->second == 17) {
+        cout<<"prog"<<endl;
+        if (it->second==17){
             it++;
-            cout << "id" << endl;
-            if (it->second == 2) {
+            cout<<"id"<<endl;
+            if (it->second==2){
                 it++;
-                cout << "var" << endl;
-                if (idList(it)) {
-                    cout << "idlist" << endl;
-                    if (it->second == 3) {
-                        cout << "begin" << endl;
+                cout<<"var"<<endl;
+                if (idList(it)){
+                    cout<<"idlist"<<endl;
+                    if (it->second==3) {
+                        cout<<"begin"<<endl;
                         it++;
                         if (stmtList(it)) {
                             cout << "stmtlist" << endl;
@@ -184,15 +176,14 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator& it) {
                 }
             }
         }
-
-
-        return found;
     }
+
+    return found;
 }
 
-    bool ::Parser::index_exp(vector<pair<string, int>>::iterator &) {
-        return false;
-    }
+bool ::Parser::index_exp(vector<pair<string, int>>::iterator&) {
+    return false;
+}
 
 
 
