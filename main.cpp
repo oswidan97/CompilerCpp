@@ -28,7 +28,8 @@ int main() {
         tok.tokenize(lines[i], tokens);
    // for(pair<string,int> x:tokens)
      //   cout<<x.first<<" "<<x.second<<endl;
-    cout<<Parser::prog(tokens.begin());
+    vector<pair<string,int>>::iterator it=tokens.begin();
+    cout<<Parser::prog(it);
 
 
 
