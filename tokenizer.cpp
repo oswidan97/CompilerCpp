@@ -28,7 +28,7 @@ void tokenizer::tokenize(string str, vector<pair<string,int>> &vec) {
             if (position->str((unsigned long) i) != "") {
                 for (int j = 0; j < scheme.size(); j++){
                     if (regex_match(position->str((unsigned long) i), scheme[j])) {
-                        flag = 1;
+                         flag = 1;
                         vec.push_back(make_pair(position->str((unsigned long) i),j));
                         break;
                     }}

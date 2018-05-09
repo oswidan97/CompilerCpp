@@ -15,9 +15,11 @@ bool ::Parser::read(vector<pair<string, int>>::iterator it) {
         it++;
         if (it->second == 15) {
             it++;
-            if (idList(it)) {
-                it++;
+
+            if(idList(it)) {
+
                 if (it->second == 16) {
+//cout <<"hh";
                     found = 1;
                     it++;
                 }
@@ -106,7 +108,7 @@ bool ::Parser::idList(vector<pair<string, int>>::iterator it) {
     if (it->second == 17) {
         found = 1;
         it++;
-        while (it->second == 19 && found) {
+        while (it->second == 19 && found==1) {
             it++;
             if (it->second == 17)
                 it++;
@@ -120,25 +122,36 @@ bool ::Parser::idList(vector<pair<string, int>>::iterator it) {
 
 bool ::Parser::stmtList(vector<pair<string, int>>::iterator it) {
     bool found = 0;
-    if (stmt(it)) {
-        found = 1;
+while(!stmt(it))
+    it++;
 
-        while (it->second == 11 && found) {
+cout<< it->first;
+    if(stmt(it)) {
+        found = 1;
+        while (it->second == 11 && found==1  ) {
             it++;
 
             if (stmt(it))
+            {
                 found=1;
+                //cout << "Jj";
+            }
             else found = 0;
+
         }
-        if (it->second==5)
-            found=1;
+        it++;
+        //cout<< it->first;
     }
+        if (it->second==5)
+
+            found=1;
+
     return found;
 }
 
 bool ::Parser::stmt(vector<pair<string, int>>::iterator it) {
     bool found=0;
-    if (assign(it)||read(it)||write(it)||forProcedure(it))
+    if (assign(it)||read(it)||write(it))
             found=1;
     return found;
 
@@ -150,6 +163,7 @@ bool ::Parser::forProcedure(vector<pair<string, int>>::iterator) {
 
 bool ::Parser::prog(vector<pair<string, int>>::iterator it) {
     bool found=0;
+
     if(it->second==1){
         it++;
         cout<<"prog"<<endl;
@@ -162,9 +176,12 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator it) {
                 if (idList(it)){
                     cout<<"idlist"<<endl;
                     it++;
-                    if (stmtList(it)){
+                    while (stmtList(it)){
                         cout<<"stmtlist"<<endl;
                         it++;
+                    //    cout << it->first;
+                    }
+
                         if (it->second==5){
                             cout<<"end"<<endl;
                             found=1;
@@ -175,7 +192,7 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator it) {
                 }
             }
         }
-    }
+
 
     return found;
 }
