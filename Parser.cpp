@@ -23,8 +23,8 @@ bool ::Parser::read(vector<pair<string, int>>::iterator& it) {
         }
     }
     return found;
-
 }
+
 
 bool ::Parser::write(vector<pair<string, int>>::iterator& it) {
 
