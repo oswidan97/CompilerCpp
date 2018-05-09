@@ -7,19 +7,21 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
+
 using namespace std;
 namespace Parser{
 
-    bool read(vector<pair<string, int>>::iterator&);
-    bool write(vector<pair<string, int>>::iterator&);
-    bool idList(vector<pair<string, int>>::iterator&);
+    bool read(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>&);
+    bool write(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>&);
+    bool idList(vector<pair<string, int>>::iterator&,vector<string>&);
     bool assign(vector<pair<string, int>>::iterator&);
     bool exp(vector<pair<string, int>>::iterator&);
     bool term(vector<pair<string, int>>::iterator&);
     bool factor(vector<pair<string, int>>::iterator&);
-    bool stmtList(vector<pair<string, int>>::iterator&);
-    bool stmt(vector<pair<string, int>>::iterator&);
-    bool prog(vector<pair<string, int>>::iterator& it);
+    bool stmtList(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>&);
+    bool stmt(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>&);
+    bool prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile);
     bool forProcedure(vector<pair<string, int>>::iterator&);
     bool index_exp(vector<pair<string, int>>::iterator&);
 

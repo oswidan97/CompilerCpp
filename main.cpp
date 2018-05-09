@@ -29,7 +29,8 @@ int main() {
    // for(pair<string,int> x:tokens)
      //   cout<<x.first<<" "<<x.second<<endl;
     vector<pair<string,int>>::iterator it=tokens.begin();
-    cout<<Parser::prog(it);
+    ofstream assemblyFile("../assembly");
+    cout<<Parser::prog(it,assemblyFile);
 
 
 
