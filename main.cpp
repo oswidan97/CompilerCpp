@@ -5,11 +5,13 @@
 #include "tokenizer.h"
 #include "TokenSchemer.h"
 #include "Parser.h"
+#include "codeGenerator.h"
 
 using namespace std;
 
 int main() {
 
+codeGenerator::assignGEN("hhh","a + csdfgsg + sfs");
     vector<string> lines;
     vector<pair<string,int>> tokens;
     tokenizer tok;

@@ -11,7 +11,16 @@
 
 using namespace std;
 namespace codeGenerator{
-
+//vector <string> temps;
     void readGen(vector<string>&,ofstream& assemblyFile);
+    void writeGen(vector<string>&,ofstream& assemblyFile);
+    void ProgNameGen(vector<string>&,ofstream& assemblyFile);
+    void EndGEN(vector<string>&,ofstream& assemblyFile);
+    void Tstore(string a);
+    void assignGEN(string store,string assignment);
+
+   void GETA(vector<pair<string,int>>::iterator&,ofstream& assemblyFile,string REGA);
+
+
 
 }

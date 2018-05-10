@@ -8,7 +8,6 @@
 #include <vector>
 
 using namespace std;
-
 bool ::Parser::read(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,
                     vector<string>& idNames) {
     bool found = 0;
@@ -21,6 +20,7 @@ bool ::Parser::read(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
                     codeGenerator::readGen(idNames,assemblyFile);
                     found = 1;
                     it++;
+
                 }
             }
         }
@@ -38,10 +38,13 @@ vector<string>& idNames) {
         if (it->second == 15) {
             it++;
             if (idList(it,idNames)) {
-
                 if (it->second == 16) {
+
+                    codeGenerator::writeGen(idNames,assemblyFile);
+
                     found = 1;
                     it++;
+                  //  idwriteNames.push_back(it->first);
                 }
             }
         }
@@ -112,6 +115,7 @@ bool ::Parser::idList(vector<pair<string, int>>::iterator& it,vector<string>& id
             it++;
             if (it->second == 17){
                 idName.push_back(it->first);
+               // cout<< idName.back();
                 it++;
 
             }
@@ -168,6 +172,9 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
                 it++;
                 cout<<"var"<<endl;
                 if (idList(it,idNames)){
+                    codeGenerator::ProgNameGen(idNames,assemblyFile);
+
+
                     cout<<"idlist"<<endl;
                     if (it->second==3) {
                         cout<<"begin"<<endl;
@@ -175,6 +182,7 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
                         if (stmtList(it,assemblyFile,idNames)) {
                             cout << "stmtlist" << endl;
                             if (it->second == 5) {
+                                codeGenerator::EndGEN(idNames,assemblyFile);
                                 cout << "end" << endl;
                                 found = 1;
                                 it++;
