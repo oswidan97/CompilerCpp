@@ -67,6 +67,7 @@ assemblyFile<<"RSUB"<<endl;
         assemblyFile<<idNames.at(idNames.size()-1)<<" RESW 1"<<"\n";
         idNames.pop_back();
     }
+    assemblyFile<<"END";
 }
 
 void codeGenerator::Tstore(string a) {
