@@ -18,9 +18,9 @@ namespace codeGenerator{
     void EndGEN(vector<string>&,ofstream& assemblyFile);
     void Tstore(string a);
     void assignGEN(string store,string assignment);
-
-   void GETA(vector<pair<string,int>>::iterator&,ofstream& assemblyFile,string REGA);
-
+    void GETA(vector<pair<string,int>>::iterator&,ofstream& assemblyFile,string& REGA);
+    void assgGen(vector<pair<string,int>>::iterator&,ofstream& assemblyFile,string& REGA);
+    void expGen1(vector<pair<string,int>>::iterator&,ofstream& assemblyFile,string& REGA);
 
 
 }

@@ -54,13 +54,14 @@ vector<string>& idNames) {
 }
 
 
-bool Parser::assign(vector<pair<string, int>>::iterator& it) {
+bool Parser::assign(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,string& REGA) {
     bool found = 0;
     if (it->second == 17) {
         it++;
         if (it->second == 12) {
             it++;
             if (exp(it)) {
+                codeGenerator::assgGen(it,assemblyFile,REGA);
                 found = 1;
             }
         }
@@ -75,7 +76,7 @@ bool ::Parser::exp(vector<pair<string, int>>::iterator& it) {
         found = 1;
         while ((it->second == 13 || it->second == 18) && found == 1) {
             it++;
-            if (!factor(it))
+            if (!term(it))
                 found = 0;
 
         }
@@ -88,7 +89,7 @@ bool ::Parser::exp(vector<pair<string, int>>::iterator& it) {
 
 bool ::Parser::factor(vector<pair<string, int>>::iterator& it) {
     bool found = 0;
-    if (it->second == 17 || it->second == 20) {
+    if (it->second == 17 ) {
         found = 1;
         it++;
     } else if (it->second == 15) {
@@ -102,6 +103,20 @@ bool ::Parser::factor(vector<pair<string, int>>::iterator& it) {
     }
     return found;
 
+}
+bool ::Parser::term(vector<pair<string, int>>::iterator & it) {
+    bool found=0;
+    if(factor(it)){
+        found=1;
+        while(it->second==18 && found){
+            it++;
+            if(!factor)
+                found=0;
+        }
+        return found;
+    }
+
+    return false;
 }
 
 bool ::Parser::idList(vector<pair<string, int>>::iterator& it,vector<string>& idName) {
@@ -127,14 +142,14 @@ bool ::Parser::idList(vector<pair<string, int>>::iterator& it,vector<string>& id
     return found;
 }
 
-bool ::Parser::stmtList(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,vector<string>& idNames) {
+bool ::Parser::stmtList(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,vector<string>& idNames,string& REGA) {
     bool found = 0;
-    if(stmt(it,assemblyFile,idNames)) {
+    if(stmt(it,assemblyFile,idNames,REGA)) {
         found = 1;
 
         while (it->second == 11 && found) {
             it++;
-            if (!stmt(it,assemblyFile,idNames))
+            if (!stmt(it,assemblyFile,idNames,REGA))
                 found=0;
 
 
@@ -146,9 +161,9 @@ bool ::Parser::stmtList(vector<pair<string, int>>::iterator& it,ofstream& assemb
     return found;
 }
 
-bool ::Parser::stmt(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,vector<string>& idNames) {
+bool ::Parser::stmt(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,vector<string>& idNames,string& REGA) {
     bool found=0;
-    if (assign(it)||read(it,assemblyFile,idNames)||write(it,assemblyFile,idNames)||forProcedure(it))
+    if (assign(it,assemblyFile,REGA)||read(it,assemblyFile,idNames)||write(it,assemblyFile,idNames)||forProcedure(it))
         found=1;
 
     return found;
@@ -159,7 +174,7 @@ bool ::Parser::forProcedure(vector<pair<string, int>>::iterator&) {
     return false;
 }
 
-bool ::Parser::prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile) {
+bool ::Parser::prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,string& REGA) {
     bool found=0;
     vector<string> idNames;
     if(it->second==1){
@@ -179,7 +194,7 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
                     if (it->second==3) {
                         cout<<"begin"<<endl;
                         it++;
-                        if (stmtList(it,assemblyFile,idNames)) {
+                        if (stmtList(it,assemblyFile,idNames,REGA)) {
                             cout << "stmtlist" << endl;
                             if (it->second == 5) {
                                 codeGenerator::EndGEN(idNames,assemblyFile);
@@ -201,6 +216,8 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
 bool ::Parser::index_exp(vector<pair<string, int>>::iterator&) {
     return false;
 }
+
+
 
 
 
