@@ -60,7 +60,7 @@ bool Parser::assign(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
         it++;
         if (it->second == 12) {
             it++;
-            if (exp(it)) {
+            if (exp(it,REGA,assemblyFile)) {
                 codeGenerator::assgGen(it,assemblyFile,REGA);
                 found = 1;
             }
@@ -70,17 +70,24 @@ bool Parser::assign(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
     return found;
 }
 
-bool ::Parser::exp(vector<pair<string, int>>::iterator& it) {
+bool ::Parser::exp(vector<pair<string, int>>::iterator& it,string& REGA,ofstream& assemblyFile) {
     bool found = 0;
-    if (factor(it)) {
+    bool isSimpleTerm=0;
+    vector<pair<string, int>>::iterator temp=it;
+    if (term(it,REGA,assemblyFile,isSimpleTerm)) {
         found = 1;
-        while ((it->second == 13 || it->second == 18) && found == 1) {
+        isSimpleTerm=0;
+       if(it->second!=13) codeGenerator::expGenTermOnly(temp,REGA);
+        while ((it->second == 13 ) && found ) {
+            isSimpleTerm=0;
             it++;
-            if (!term(it))
+            if (!term(temp=it,REGA,assemblyFile,isSimpleTerm))
                 found = 0;
-
+            if(found){
+                if (isSimpleTerm)codeGenerator::expGenExpPlusTerm(temp,assemblyFile,REGA);
+                else
+            }
         }
-        return found;
     }
 
 
@@ -104,19 +111,19 @@ bool ::Parser::factor(vector<pair<string, int>>::iterator& it) {
     return found;
 
 }
-bool ::Parser::term(vector<pair<string, int>>::iterator & it) {
+bool ::Parser::term(vector<pair<string, int>>::iterator & it,string& REGA,ofstream& assemblyFile, bool& isSimpleTerm) {
     bool found=0;
     if(factor(it)){
         found=1;
+        if (it->second!=18) isSimpleTerm=1;
         while(it->second==18 && found){
             it++;
-            if(!factor)
+            if(!factor(it))
                 found=0;
         }
-        return found;
     }
 
-    return false;
+    return found;
 }
 
 bool ::Parser::idList(vector<pair<string, int>>::iterator& it,vector<string>& idName) {

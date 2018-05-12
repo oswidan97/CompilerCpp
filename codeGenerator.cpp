@@ -111,10 +111,28 @@ void codeGenerator::assignGEN(string store, string assignment) {
 void ::codeGenerator::assgGen(vector<pair<string, int>>::iterator &it, ofstream &assemblyFile, string &REGA) {
 
     codeGenerator::GETA(it,assemblyFile,REGA);
-    assemblyFile<<"STA "<<it->first;
+    assemblyFile<<"STA "<<it->first<<endl;
     REGA.clear();
 
 }
+
+void ::codeGenerator::expGenTermOnly(vector<pair<string, int>>::iterator & it, string &REGA) {
+
+        REGA=it->first;
+
+
+}
+
+void  ::codeGenerator::expGenExpPlusTerm(vector<pair<string,int>>::iterator&term, ofstream &assemblyFile, string &REGA) {
+
+    assemblyFile<<"ADD"<<term->first<<endl;
+
+
+
+}
+
+
+
 
 
 

@@ -20,7 +20,8 @@ namespace codeGenerator{
     void assignGEN(string store,string assignment);
     void GETA(vector<pair<string,int>>::iterator&,ofstream& assemblyFile,string& REGA);
     void assgGen(vector<pair<string,int>>::iterator&,ofstream& assemblyFile,string& REGA);
-    void expGen1(vector<pair<string,int>>::iterator&,ofstream& assemblyFile,string& REGA);
+    void expGenTermOnly(vector<pair<string,int>>::iterator&,string& REGA);
+    void expGenExpPlusTerm(vector<pair<string,int>>::iterator&, ofstream& assemblyFile, string& REGA);
 
 
 }

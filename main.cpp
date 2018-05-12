@@ -33,8 +33,7 @@ codeGenerator::assignGEN("hhh","a + csdfgsg + sfs");
     vector<pair<string,int>>::iterator it=tokens.begin();
     ofstream assemblyFile("../assembly");
     string REGA;
-    cout<<Parser::prog(it,assemblyFile,REGA);
-
+    cout<<Parser::prog(it,assemblyFile,REGA)<<endl;
 
 
     return 0;
