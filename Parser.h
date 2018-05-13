@@ -16,9 +16,9 @@ namespace Parser{
     bool write(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>&);
     bool idList(vector<pair<string, int>>::iterator&,vector<string>&);
     bool assign(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,string& REGA);
-    bool exp(vector<pair<string, int>>::iterator&,string& REGA,ofstream& assemblyFile);
-    bool term(vector<pair<string, int>>::iterator&,string& REGA,ofstream& assemblyFile,bool& isSimpleTerm);
-    bool factor(vector<pair<string, int>>::iterator&);
+    bool exp(vector<pair<string, int>>::iterator&,string& REGA,ofstream& assemblyFile,vector<string> &expression);
+    bool term(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>& expression);
+    bool factor(vector<pair<string, int>>::iterator&,vector<string>& expression);
     bool stmtList(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>&,string& REGA);
     bool stmt(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>&,string& REGA);
     bool prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,string& REGA);

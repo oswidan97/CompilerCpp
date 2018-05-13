@@ -56,11 +56,12 @@ vector<string>& idNames) {
 
 bool Parser::assign(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,string& REGA) {
     bool found = 0;
+    vector<string> expression;
     if (it->second == 17) {
         it++;
         if (it->second == 12) {
             it++;
-            if (exp(it,REGA,assemblyFile)) {
+            if (exp(it,REGA,assemblyFile,expression)) {
                 codeGenerator::assgGen(it,assemblyFile,REGA);
                 found = 1;
             }
@@ -70,23 +71,16 @@ bool Parser::assign(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
     return found;
 }
 
-bool ::Parser::exp(vector<pair<string, int>>::iterator& it,string& REGA,ofstream& assemblyFile) {
+bool ::Parser::exp(vector<pair<string, int>>::iterator& it,string& REGA,ofstream& assemblyFile,vector<string>& expression) {
     bool found = 0;
-    bool isSimpleTerm=0;
-    vector<pair<string, int>>::iterator temp=it;
-    if (term(it,REGA,assemblyFile,isSimpleTerm)) {
+    if (term(it,assemblyFile,expression)) {
         found = 1;
-        isSimpleTerm=0;
-       if(it->second!=13) codeGenerator::expGenTermOnly(temp,REGA);
         while ((it->second == 13 ) && found ) {
-            isSimpleTerm=0;
+            expression.push_back(it->first);
             it++;
-            if (!term(temp=it,REGA,assemblyFile,isSimpleTerm))
+            if (!term(it,assemblyFile,expression))
                 found = 0;
-            if(found){
-                if (isSimpleTerm)codeGenerator::expGenExpPlusTerm(temp,assemblyFile,REGA);
-                else
-            }
+
         }
     }
 
@@ -94,16 +88,19 @@ bool ::Parser::exp(vector<pair<string, int>>::iterator& it,string& REGA,ofstream
     return found;
 }
 
-bool ::Parser::factor(vector<pair<string, int>>::iterator& it) {
+bool ::Parser::factor(vector<pair<string, int>>::iterator& it,vector<string>& expression) {
     bool found = 0;
     if (it->second == 17 ) {
         found = 1;
+        expression.push_back(it->first);
         it++;
     } else if (it->second == 15) {
+        expression.push_back(it->first);
         it++;
         if (exp) {
             if (it->second == 16) {
                 found = 1;
+                expression.push_back(it->first);
                 it++;
             }
         }
@@ -111,14 +108,15 @@ bool ::Parser::factor(vector<pair<string, int>>::iterator& it) {
     return found;
 
 }
-bool ::Parser::term(vector<pair<string, int>>::iterator & it,string& REGA,ofstream& assemblyFile, bool& isSimpleTerm) {
+bool ::Parser::term(vector<pair<string, int>>::iterator & it,ofstream& assemblyFile, vector<string>& expression) {
     bool found=0;
-    if(factor(it)){
+    if(factor(it,expression)){
         found=1;
-        if (it->second!=18) isSimpleTerm=1;
+
         while(it->second==18 && found){
+            expression.push_back(it->first);
             it++;
-            if(!factor(it))
+            if(!factor(it,expression))
                 found=0;
         }
     }

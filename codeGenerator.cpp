@@ -108,11 +108,9 @@ void codeGenerator::assignGEN(string store, string assignment) {
     stack<string> stack;
 }
 
-void ::codeGenerator::assgGen(vector<pair<string, int>>::iterator &it, ofstream &assemblyFile, string &REGA) {
+void ::codeGenerator::assgGen(vector<pair<string, int>>::iterator &it, ofstream &assemblyFile, vector<string>& expression ) {
 
-    codeGenerator::GETA(it,assemblyFile,REGA);
-    assemblyFile<<"STA "<<it->first<<endl;
-    REGA.clear();
+
 
 }
 
