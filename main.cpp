@@ -11,7 +11,7 @@ using namespace std;
 
 int main() {
 
-codeGenerator::assignGEN("hhh","a + csdfgsg + sfs");
+//codeGenerator::assignGEN("hhh","a + csdfgsg + sfs");
     vector<string> lines;
     vector<pair<string,int>> tokens;
     tokenizer tok;
@@ -32,7 +32,7 @@ codeGenerator::assignGEN("hhh","a + csdfgsg + sfs");
      //   cout<<x.first<<" "<<x.second<<endl;
     vector<pair<string,int>>::iterator it=tokens.begin();
     ofstream assemblyFile("../assembly");
-    string REGA;
+    string REGA="";
     cout<<Parser::prog(it,assemblyFile,REGA)<<endl;
 
 

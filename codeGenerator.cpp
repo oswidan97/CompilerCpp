@@ -7,6 +7,7 @@
 #include <stack>
 #include <sstream>
 #include "codeGenerator.h"
+#include "expEvaluator.h"
 
 vector<string> temp;
 using namespace std;
@@ -108,23 +109,46 @@ void codeGenerator::assignGEN(string store, string assignment) {
     stack<string> stack;
 }
 
-void ::codeGenerator::assgGen(vector<pair<string, int>>::iterator &it, ofstream &assemblyFile, vector<string>& expression ) {
+void ::codeGenerator::assgGen(vector<pair<string, int>>::iterator &it, ofstream &assemblyFile, vector<string> &expression,
+                         int &Tcount, string &REGA) {
 
-
-
-}
-
-void ::codeGenerator::expGenTermOnly(vector<pair<string, int>>::iterator & it, string &REGA) {
-
-        REGA=it->first;
-
+    expEvaluator::EvaluatePostfix(expression, Tcount, REGA, assemblyFile);
 
 }
 
-void  ::codeGenerator::expGenExpPlusTerm(vector<pair<string,int>>::iterator&term, ofstream &assemblyFile, string &REGA) {
 
-    assemblyFile<<"ADD"<<term->first<<endl;
+void ::codeGenerator::assembleExp(string operand1, string operand2, string oper, string &REGA,
+                                  ofstream &assemblyFile,int& TLocaCount) {
 
+
+    if (REGA == "") {
+        assemblyFile << "LDA " << operand1 << endl;
+        if (oper == "*")
+            assemblyFile << "MUL " << operand2 << endl;
+        else if (oper == "+")
+            assemblyFile << "ADD " << operand2 << endl;
+    } else if (REGA == operand1) {
+
+        if (oper == "*")
+            assemblyFile << "MUL " << operand2 << endl;
+        else if (oper == "+")
+            assemblyFile << "ADD " << operand2 << endl;
+    }else if (REGA == operand2) {
+        if (oper == "*")
+            assemblyFile << "MUL " << operand1 << endl;
+        else if (oper == "+")
+            assemblyFile << "ADD " << operand1 << endl;
+    }else{
+
+        assemblyFile<<"STA T"<<TLocaCount++<<endl;
+        assemblyFile << "LDA " << operand1 << endl;
+        if (oper == "*")
+            assemblyFile << "MUL " << operand2 << endl;
+        else if (oper == "+")
+            assemblyFile << "ADD " << operand2 << endl;
+    }
+
+    REGA = "T" + std::to_string(TLocaCount);
 
 
 }

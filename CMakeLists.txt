@@ -3,5 +3,5 @@ project(Compiler)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp tokenizer.cpp tokenizer.h TokenSchemer.cpp TokenSchemer.h Parser.cpp Parser.h codeGenerator.cpp codeGenerator.h)
+set(SOURCE_FILES main.cpp tokenizer.cpp tokenizer.h TokenSchemer.cpp TokenSchemer.h Parser.cpp Parser.h codeGenerator.cpp codeGenerator.h expEvaluator.cpp expEvaluator.h)
 add_executable(Compiler ${SOURCE_FILES})
