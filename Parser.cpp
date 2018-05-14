@@ -58,7 +58,7 @@ bool Parser::assign(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
     bool found = 0;
     vector<string> expression;
     int Tcount=0;
-    if (it->second == 17) {
+    if (it->second == 21) {
         vector<pair<string, int>>::iterator tempIt=it;
         it++;
         if (it->second == 12) {
@@ -81,7 +81,7 @@ bool ::Parser::exp(vector<pair<string, int>>::iterator& it,string& REGA,ofstream
     bool found = 0;
     if (term(it,assemblyFile,expression)) {
         found = 1;
-        while ((it->second == 13 ) && found ) {
+        while ((it->second == 13||it->second==14 ) && found ) {
             expression.push_back(it->first);
             it++;
             if (!term(it,assemblyFile,expression))
@@ -96,7 +96,7 @@ bool ::Parser::exp(vector<pair<string, int>>::iterator& it,string& REGA,ofstream
 
 bool ::Parser::factor(vector<pair<string, int>>::iterator& it,vector<string>& expression) {
     bool found = 0;
-    if (it->second == 17 ) {
+    if (it->second == 21 ) {
         found = 1;
         expression.push_back(it->first);
         it++;
@@ -119,12 +119,14 @@ bool ::Parser::term(vector<pair<string, int>>::iterator & it,ofstream& assemblyF
     if(factor(it,expression)){
         found=1;
 
-        while(it->second==18 && found){
+        while((it->second==18 || it->second==17)&& found){ //* || DIV || found
+            cout<<it->second<<endl;
             expression.push_back(it->first);
             it++;
             if(!factor(it,expression))
                 found=0;
         }
+
     }
 
     return found;
@@ -133,15 +135,14 @@ bool ::Parser::term(vector<pair<string, int>>::iterator & it,ofstream& assemblyF
 bool ::Parser::idList(vector<pair<string, int>>::iterator& it,vector<string>& idName) {
 
     bool found = 0;
-    if (it->second == 17) {
+    if (it->second == 21) {
         found = 1;
         idName.push_back(it->first);
         it++;
         while (it->second == 19 && found) {
             it++;
-            if (it->second == 17){
+            if (it->second == 21){
                 idName.push_back(it->first);
-               // cout<< idName.back();
                 it++;
 
             }
@@ -193,7 +194,7 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
     if(it->second==1){
         it++;
         cout<<"prog"<<endl;
-        if (it->second==17){
+        if (it->second==21){
             it++;
             cout<<"id"<<endl;
             if (it->second==2){

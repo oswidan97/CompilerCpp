@@ -26,14 +26,15 @@ regex rgx1("//d+");
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(11,regex(";")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(12,regex(":=")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(13,regex("\\+")));
-    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(14,regex("-")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(14,regex("\\-")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(15,regex("\\(")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(16,regex("\\)")));
-    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(17,rgx));
-    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(18,regex("\\*")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(17,regex("DIV")));
+   TokenSchemer::tokenScheme.insert( std::pair <int,regex>(18,regex("\\*")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(19,regex(",")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(20,rgx1));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(21,rgx));
+
 
 
 }

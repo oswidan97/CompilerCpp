@@ -22,7 +22,7 @@ int ::expEvaluator::prec(string s) {
 
 bool ::expEvaluator::isOperator(string s) {
 
-    return (bool) (s == "+" || s == "*" ? 1 : 0);
+    return (bool) (s == "+" || s == "*" ||s=="-"||s=="DIV" ? 1 : 0);
 }
 
 vector<string>& ::expEvaluator::infixToPostfix(vector<string> infix,string& REGA,ofstream& assemblyfile) {
@@ -101,7 +101,6 @@ void expEvaluator::EvaluatePostfix(vector<string> expression,int& Tcount ,string
             operand1 = S.top();
             S.pop();
             // Perform operation
-            //TODO 7ot El T fel string badal ely enta shelto
             codeGenerator::assembleExp(operand1, operand2,postFixExp[i],REGA,assemblyfile,TLocalCount);
             //Push back result of operation on stack.
             S.push("T"+std::to_string(TLocalCount-1));

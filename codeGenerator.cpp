@@ -120,32 +120,60 @@ void ::codeGenerator::assgGen(vector<pair<string, int>>::iterator &it, ofstream 
 void ::codeGenerator::assembleExp(string operand1, string operand2, string oper, string &REGA,
                                   ofstream &assemblyFile,int& TLocaCount) {
 
+//code generation of different operations with different possibilities of the contents of register A
 
     if (REGA == "") {
-        assemblyFile << "LDA " << operand1 << endl;
+        assemblyFile << "LDA " << operand2 << endl;
         if (oper == "*")
-            assemblyFile << "MUL " << operand2 << endl;
+            assemblyFile << "MUL " << operand1 << endl;
         else if (oper == "+")
-            assemblyFile << "ADD " << operand2 << endl;
+            assemblyFile << "ADD " << operand1 << endl;
+        else if(oper=="-")
+            assemblyFile<<"SUB "<<operand1<<endl;
+        else if (oper=="DIV")
+            assemblyFile<<"DIV "<<operand1<<endl;
     } else if (REGA == operand1) {
 
         if (oper == "*")
             assemblyFile << "MUL " << operand2 << endl;
         else if (oper == "+")
             assemblyFile << "ADD " << operand2 << endl;
+        else if(oper=="-"){
+            assemblyFile<<"STA "<<operand1;
+            assemblyFile<<"LDA "<<operand2;
+            assemblyFile<<"SUB "<<operand1;
+
+        }
+        else if (oper=="DIV"){
+            assemblyFile<<"STA "<<operand1;
+            assemblyFile<<"LDA "<<operand2;
+            assemblyFile<<"DIV "<<operand1;
+        }
+
+
+
     }else if (REGA == operand2) {
         if (oper == "*")
             assemblyFile << "MUL " << operand1 << endl;
         else if (oper == "+")
             assemblyFile << "ADD " << operand1 << endl;
-    }else{
+        else if(oper=="-")
+            assemblyFile<<"SUB "<<operand1<<endl;
+        else if (oper=="DIV")
+            assemblyFile<<"DIV "<<operand1<<endl;
+
+    }else{  //Store the variable currently in register A if not needed in the current computation
 
         assemblyFile<<"STA T"<<TLocaCount++<<endl;
-        assemblyFile << "LDA " << operand1 << endl;
+        assemblyFile << "LDA " << operand2 << endl;
         if (oper == "*")
-            assemblyFile << "MUL " << operand2 << endl;
+            assemblyFile << "MUL " << operand1 << endl;
         else if (oper == "+")
-            assemblyFile << "ADD " << operand2 << endl;
+            assemblyFile << "ADD " << operand1 << endl;
+        else if(oper=="-")
+            assemblyFile<<"SUB "<<operand1<<endl;
+        else if (oper=="DIV")
+            assemblyFile<<"DIV "<<operand1<<endl;
     }
 
     REGA = "T" + std::to_string(TLocaCount);

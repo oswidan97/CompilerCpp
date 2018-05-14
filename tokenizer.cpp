@@ -14,7 +14,7 @@ void tokenizer::tokenize(string str, vector<pair<string,int>> &vec) {
 
     int flag = 0;
 
-    regex rgx("(\\w+\\.*)\\s*(:=)*([*+,();]{0,1})(;{0,1})");
+    regex rgx("(\\w+\\.*)\\s*(:=)*(DIV|[-*+,();]{0,1})(;{0,1})");
     sregex_iterator position(str.cbegin(), str.cend(), rgx);
     sregex_iterator end;
 
