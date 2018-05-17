@@ -3,11 +3,16 @@
 //
 
 #include <regex>
+#include <iostream>
 #include "tokenizer.h"
 #include "TokenSchemer.h"
 
+using std::regex;
+using std::sregex_iterator;
+using std::iostream;
+using std::cout;
+using std::endl;
 using namespace std;
-
 tokenizer::tokenizer() {}
 
 void tokenizer::tokenize(string str, vector<pair<string,int>> &vec) {

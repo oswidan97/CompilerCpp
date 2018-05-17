@@ -7,8 +7,11 @@
 #include "expEvaluator.h"
 #include "codeGenerator.h"
 
-using namespace std;
-
+using std::vector;
+using std::string;
+using std::pair;
+using std::ofstream;
+using std::stack;
 int ::expEvaluator::prec(string s) {
     if (s == "^")
         return 3;
@@ -77,7 +80,7 @@ vector<string>& ::expEvaluator::infixToPostfix(vector<string> infix,string& REGA
     }
 
 
-    return * postFix;
+    return *postFix;
 }
 
 
@@ -113,6 +116,7 @@ void expEvaluator::EvaluatePostfix(vector<string> expression,int& Tcount ,string
     }
     Tcount=TLocalCount;
     // If expression is in correct format, Stack will finally have one element. This will be the output.
-     delete &postFixExp;
+
+
 }
 

@@ -9,7 +9,10 @@
 #include <vector>
 #include <fstream>
 
-using namespace std;
+using std::vector;
+using std::string;
+using std::pair;
+using std::ofstream;
 namespace Parser{
 
     bool read(vector<pair<string, int>>::iterator&,ofstream& assemblyFile,vector<string>&);

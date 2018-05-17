@@ -6,10 +6,16 @@
 #define COMPILER_TOKENSCHEMER_H
 #include <map>
 #include <string>
-
-using namespace std ;
 #include <string>
 #include <regex>
+
+using std::vector;
+using std::string;
+using std::pair;
+using std::ofstream;
+using std::regex;
+using std::map;
+
 
 class TokenSchemer {
 

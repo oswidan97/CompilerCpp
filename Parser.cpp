@@ -4,10 +4,10 @@
 
 #include "Parser.h"
 #include "codeGenerator.h"
-#include <iterator>
-#include <vector>
 
-using namespace std;
+using std::iostream;
+using std::endl;
+using std::cout;
 bool ::Parser::read(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,
                     vector<string>& idNames) {
     bool found = 0;
@@ -120,7 +120,6 @@ bool ::Parser::term(vector<pair<string, int>>::iterator & it,ofstream& assemblyF
         found=1;
 
         while((it->second==18 || it->second==17)&& found){ //* || DIV || found
-            cout<<it->second<<endl;
             expression.push_back(it->first);
             it++;
             if(!factor(it,expression))
@@ -157,7 +156,6 @@ bool ::Parser::idList(vector<pair<string, int>>::iterator& it,vector<string>& id
 bool ::Parser::stmtList(vector<pair<string, int>>::iterator& it,ofstream& assemblyFile,vector<string>& idNames,string& REGA,int& reCount) {
     bool found = 0;
     if(stmt(it,assemblyFile,idNames,REGA,reCount)) {
-        cout<<"stmt"<<endl;
         found = 1;
 
         while (it->second == 11 && found) {
@@ -193,27 +191,20 @@ bool ::Parser::prog(vector<pair<string, int>>::iterator& it,ofstream& assemblyFi
     int reCount=0;
     if(it->second==1){
         it++;
-        cout<<"prog"<<endl;
         if (it->second==21){
             it++;
-            cout<<"id"<<endl;
             if (it->second==2){
                 it++;
-                cout<<"var"<<endl;
                 if (idList(it,idNames)){
                     codeGenerator::ProgNameGen(idNames,assemblyFile);
-                    cout<<"idlist"<<endl;
                     if (it->second==3) {
-                        cout<<"begin"<<endl;
                         it++;
                         if (stmtList(it,assemblyFile,idNames,REGA,reCount)) {
-                            cout << "stmtlist" << endl;
                             for (int i = 0; i < reCount; ++i)
                                 assemblyFile<<"T"<<i<<" RESW "<<"1"<<endl;
 
                             if (it->second == 5) {
                                 codeGenerator::EndGEN(idNames,assemblyFile);
-                                cout << "end" << endl;
                                 found = 1;
                                 it++;
                             }

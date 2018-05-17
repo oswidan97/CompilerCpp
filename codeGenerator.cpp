@@ -10,7 +10,15 @@
 #include "expEvaluator.h"
 
 vector<string> temp;
-using namespace std;
+using std::string;
+using std::pair;
+using std::ofstream;
+using std::iostream;
+using std::endl;
+using std::cout;
+using std::stringstream;
+using std::stack;
+using std::istringstream;
 
 void ::codeGenerator::readGen(vector<string> &idNames, ofstream &assemblyFile) {
 
@@ -22,22 +30,6 @@ void ::codeGenerator::readGen(vector<string> &idNames, ofstream &assemblyFile) {
         idNames.pop_back();
     }
     idNames.clear();
-
-}
-
-void codeGenerator::GETA(vector<pair<string, int>>::iterator &it, ofstream &assemblyFile, string &REGA) {
-
-    if (REGA.empty())
-        assemblyFile << "LDA " << it->first << endl;
-    else if (REGA != it->first) {
-        //string T;
-        //TODO add RESW T in the end of the program
-        assemblyFile << "STA " << "T";
-        //REGA = T;
-        // TODO the token specifier of the previous value in REGA should now be "T"
-        assemblyFile << "LDA " + it->first << endl;
-    }
-    REGA = it->first;
 
 }
 
@@ -73,40 +65,6 @@ void codeGenerator::EndGEN(vector<string> &idNames, ofstream &assemblyFile) {
         idNames.pop_back();
     }
     assemblyFile << "END";
-}
-
-void codeGenerator::Tstore(string a) {
-    int i = 0;
-    int f = 0;
-//cout<<temp.at(0);
-    while (i < temp.size() && temp.at(i) == a) {
-
-        f = 1;
-        i++;
-    }
-    if (f == 0) {
-        cout << "888";
-    }
-
-}
-
-void codeGenerator::assignGEN(string store, string assignment) {
-    string number1, number2, acc = "";
-    int count = 0;
-    stringstream ss(assignment);
-    char sep = '+';
-    int i = 0;
-
-    istringstream iss(assignment);
-    char subs[1000];
-    do {
-
-        iss >> subs;
-        cout << "Substring: " << subs[i] << endl;
-    } while (iss);
-
-
-    stack<string> stack;
 }
 
 void ::codeGenerator::assgGen(vector<pair<string, int>>::iterator &it, ofstream &assemblyFile, vector<string> &expression,

@@ -5,8 +5,7 @@
 #ifndef COMPILER_TOKENIZER_H
 #define COMPILER_TOKENIZER_H
 
-
-#include <iostream>
+using namespace std;
 
 class tokenizer {
 private:
@@ -16,7 +15,7 @@ private:
 
 public :
         tokenizer();
-        void tokenize(std::string,std::vector<std::pair<std::string,int>> &);
+        void tokenize(string,std::vector<std::pair<string,int>> &);
 
 };
 

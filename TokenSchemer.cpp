@@ -1,13 +1,9 @@
 //
 // Created by ziad on 4/27/18.
 //
-#include <iostream>
+
 
 #include "TokenSchemer.h"
-#include <map>
-#include <regex>
-
-using namespace std ;
 
 
 void TokenSchemer::scheme(){
@@ -30,7 +26,7 @@ regex rgx1("//d+");
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(15,regex("\\(")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(16,regex("\\)")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(17,regex("DIV")));
-   TokenSchemer::tokenScheme.insert( std::pair <int,regex>(18,regex("\\*")));
+    TokenSchemer::tokenScheme.insert( std::pair <int,regex>(18,regex("\\*")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(19,regex(",")));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(20,rgx1));
     TokenSchemer::tokenScheme.insert( std::pair <int,regex>(21,rgx));
