@@ -12,7 +12,7 @@ using std::string;
 using std::pair;
 using std::ofstream;
 using std::stack;
-int ::expEvaluator::prec(string s) {
+int ::expEvaluator::prec(string s) { //check precedence
     if (s == "^")
         return 3;
     else if (s == "*" || s == "/")

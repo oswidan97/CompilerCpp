@@ -54,7 +54,6 @@ void codeGenerator::ProgNameGen(vector<string> &idNames, ofstream &assemblyFile)
         idNames.pop_back();
     }
     assemblyFile << "BEGIN " << endl;
-//idNames.clear();
 }
 
 void codeGenerator::EndGEN(vector<string> &idNames, ofstream &assemblyFile) {
