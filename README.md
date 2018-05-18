@@ -13,6 +13,7 @@ If CMake is not installed on your system, follow the following instructions
     sudo apt-get install cmake
 #### Building
     cmake ~/PATH_of_source_code's_parent_directory/cmake-build-debug
+    cd ~/PATH_of_source_code's_parent_directory/cmake-build-debug
     make
 ### For windows based systems
 #### Installing CMake
@@ -50,3 +51,5 @@ with the default file name
 <write>::= WRITE ( <id-list> )
 <body>::= <stmt> | BEGIN <stmt-list> END
 ```
+## Building and compiling test
+[![asciicast](https://asciinema.org/a/7qTDHayUjVzfCHpWhtZGgsLmp.png)](https://asciinema.org/a/7qTDHayUjVzfCHpWhtZGgsLmp)
