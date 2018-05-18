@@ -9,7 +9,7 @@ git clone https://github.com/oswidan97/CompilerCpp.git
 ```    
 ### For UNIX based systems
 If CMake is not installed on your system, follow the following instructions
-#### Installing CMake
+#### Installing CMake on Ubuntu
     sudo apt-get install cmake
 #### Building
     cmake ~/PATH_of_source_code's_parent_directory/cmake-build-debug
